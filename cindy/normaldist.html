@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Normal distribution</title>
+		<script type="text/javascript" src="js/Cindy.js"></script>
+		<meta charset="utf-8">		
+		<link rel="stylesheet" href="css/cindy.css">
+	</head>
+	<body style="font-family:Arial;" bgcolor="grey">
+		<h1>CindyJS: Function Plotting</h1>
+		<div  id="CSCanvas" style="width:500px; height:500px; border:2px solid #000000"></div>
+		<script id='csmove' type='text/x-cindyscript'>
+			draw(A);
+			draw([0,0]);		
+			draw(line([0,5]));
+			plot(pow(x,A.x));
+			pts = allpoints();
+			forall(pts,p,
+				if(p.x<0,
+					p.color = [1,1,0],
+					p.color = [0,1,0];
+				)
+			);
+		</script>
+		
+		<script type="text/javascript">
+			var gslp=[
+			{name:"A", kind:"P", type:"Free", pos:[2,2,1]}
+			];
+			CindyJS({canvasname:"CSCanvas",
+				movescript:"csmove",
+				geometry:gslp});
+		</script>
+	</body>
+</html>
